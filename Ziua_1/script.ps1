@@ -197,5 +197,59 @@ get-service | ? name -like "a*" | gm
 
 Get-Service | select name  
 
+Get-Process 
+Get-Process | ? name -like "*notepad*" 
+Get-Process | ? name -like "*notepad*"  | select *
+
+Get-Process | ? name -like "*notepad*"  | select *
+
+Get-Process | ? name -like "*notepad*" | select name,id, MainWindowTitle 
+
+Stop-Process -id 8168 -WhatIf
+
+Get-Process | ? MainWindowTitle  -like "Untitled - Notepad" | Stop-Process
 
 
+Get-Process | select  Handles , NPM ,   PM ,    WS ,CPU   ,Id , SI ,ProcessName | Get-Member
+
+
+#csv
+
+Get-Process |  select  Handles , NPM ,   PM ,    WS ,CPU   ,Id , SI ,ProcessName  | export-csv c:\alin\process.csv -NoTypeInformation
+
+Get-Process | export-csv c:\alin\process_all.csv -NoTypeInformation
+
+ise C:\Alin\process.csv
+ise C:\Alin\process_all.csv
+
+#Error
+Get-Process |  select  Handles , NPM ,   PM ,    WS ,CPU   ,Id , SI ,ProcessName  | ft | export-csv c:\alin\process.csv -NoTypeInformation
+
+$Password = read-host -AsSecureString
+$useri = import-csv C:\Alin\PS-01\Useri.csv
+
+$useri | foreach {
+
+# Error "$_.Nume.$_.Prenume"
+"$($_.Nume).$($_.Prenume)"
+
+New-LocalUser "$($_.Nume).$($_.Prenume)" -Password $Password -FullName "$($_.Nume)  $($_.Prenume)" -Description "Orice" -WhatIf
+
+}
+
+# export password
+
+$cred = Get-Credential
+
+$cred | Export-Csv C:\alin\PS-01\cred.csv
+notepad C:\alin\PS-01\cred.csv
+$necriptat = import-csv  C:\alin\PS-01\cred.csv
+
+$cred | Export-Clixml C:\alin\PS-01\cred.xml
+notepad C:\alin\PS-01\cred.xml
+
+Get-Process | Export-Clixml C:\alin\PS-01\process.xml 
+notepad C:\alin\PS-01\process.xml
+
+$cliXML = Import-Clixml C:\alin\PS-01\process.xml
+$cliXML 

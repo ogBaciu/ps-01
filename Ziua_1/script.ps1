@@ -187,3 +187,15 @@ $listaColoane | % {
 $_.DisplayName + " |  " + $_.Status
 
 }
+
+
+
+#Pipeline
+
+
+get-service | ? name -like "a*" | gm
+
+Get-Service | select name  
+
+
+

@@ -253,3 +253,6 @@ notepad C:\alin\PS-01\process.xml
 
 $cliXML = Import-Clixml C:\alin\PS-01\process.xml
 $cliXML 
+
+Get-Service
+

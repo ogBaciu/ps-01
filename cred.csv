@@ -1,0 +1,3 @@
+#TYPE System.Management.Automation.PSCredential
+"UserName","Password"
+"alin","System.Security.SecureString"

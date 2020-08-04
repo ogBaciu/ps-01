@@ -161,3 +161,16 @@ ls C:\Users\Administrator\Downloads -Recurse | Unblock-File
 #daca nu exista 
 $env:PSModulePath -split ";"
 mkdir C:\Users\Administrator\Documents\WindowsPowerShell\Modules
+
+
+Get-Module
+
+
+Import-Module ActiveDirectory 
+get-alias gcm
+
+Get-Command -Module server*
+
+Get-WindowsFeature 
+Add-WindowsFeature telnet-client
+

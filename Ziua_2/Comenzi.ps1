@@ -204,3 +204,85 @@ $sursadedate | ? { $_.EntryType -like "error" }
 
 $sursadedate2 = ipconfig /all
 $sursadedate2  | ? { $_ -like "*ipv4*"}
+
+
+
+
+get-process 
+<#
+10 cei mai mari consumatori de resurse unici
+
+NUmele , cpu 
+#>
+Get-Process | select processname ,cpu | sort cpu -Descending | select -first 10
+Get-Process | select processname ,cpu | sort cpu | select -last 10
+
+<#
+get-service
+
+#toate serviciile oprite cu si incep cu litera x
+#porniti serviciile - whatif
+# output 
+
+#opriti serviciile
+2- metode 
+#>
+Start-Sleep -Seconds 2
+
+
+#Staus 
+$servicestatus  = get-service | ? {$_.name -like "x*"}
+$servicestatus
+
+##########  v1
+get-service | ? {$_.status -like "stop*" -and $_.name -like "x*"}
+get-service | ? {$_.status -like "stop*" -and $_.name -like "x*"} | Start-Service -WhatIf
+get-service | ? {$_.status -like "stop*" -and $_.name -like "x*"} | Start-Service 
+
+get-service | ? {$_.name -like "x*"} | select name,status | export-csv ./status.csv -NoTypeInformation
+
+get-service | ? {$_.status -like "run*" -and $_.name -like "x*"}
+get-service | ? {$_.status -like "run*" -and $_.name -like "x*"} | Stop-Service -Force
+
+
+######### v2
+
+$serviceStart = get-service | ? {$_.status -like "stop*" -and $_.name -like "x*"}
+$serviceStop =  get-service | ? {$_.status -like "runn*" -and $_.name -like "x*"}
+
+$service.start()
+$serviceStop.stop()
+
+######### v3
+
+$collection = get-service | ? {$_.status -like "stop*" -and $_.name -like "x*"}
+
+foreach ($i in $collection)
+{
+    #Start-Service $i.name -WhatIf
+    Start-Service $i.name 
+}
+
+$collection = get-service | ? {$_.status -like "run*" -and $_.name -like "x*"}
+
+foreach ($i in $collection)
+{
+    #Start-Service $i.name -WhatIf
+    Stop-Service $i.name -Force
+}
+
+######### v4
+
+$collection = get-service | ? {$_.status -like "stop*" -and $_.name -like "x*"}
+
+$collection | % {
+
+Start-Service $_.name 
+}
+
+$collection = get-service | ? {$_.status -like "run*" -and $_.name -like "x*"}
+
+$collection | % {
+
+Stop-Service $_.name  -Force
+}

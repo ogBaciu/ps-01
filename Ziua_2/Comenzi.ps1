@@ -286,3 +286,77 @@ $collection | % {
 
 Stop-Service $_.name  -Force
 }
+
+
+write-host "prima comanda"
+Start-Process ping localhost -Wait
+write-host "a 2a comanda"
+
+# kill notepad 
+
+Get-Process | gm
+
+
+#### Pipline Advance
+
+## ByValue
+help Get-Service -ShowWindow
+
+"alg","sdasd","XblGameSave" | Get-Service 
+
+Get-Content .\value.txt | Get-Service 
+
+
+Get-Service | select name
+help Start-Service -ShowWindow
+
+## ByPropertyName
+
+Get-ADComputer -Filter * | Test-Connection -count 1
+
+Get-ADComputer -Filter *  |select name | gm 
+Get-ADComputer -Filter * | gm
+
+help Test-Connection  -ShowWindow
+
+Get-ADComputer -Filter * | select @{n="computername";e={$_.name}} | Test-Connection -Count 1 -ErrorAction SilentlyContinue 
+
+
+
+$lista = Get-Content E:\listapc.txt
+$lista | select @{n="computername";e={$_}} | gm
+$lista | select @{n="computername";e={$_}} | Test-Connection -count 1
+
+$lista | % {Test-Connection $_ -count 1 } 
+
+Test-Connection (Get-Content E:\listapc.txt) -count 1
+
+## Remote
+Enable-PSRemoting -Force
+
+
+$cred = Get-Credential
+
+Enter-PSSession lon-dc1 -Credential $cred 
+
+Enter-PSSession lon-dc1 
+
+New-PSSession -ComputerName lon-dc1 
+
+
+#one to many
+$all = New-PSSession -ComputerName lon-cl1, lon-dc1
+
+Invoke-Command $all  -ScriptBlock {
+""
+$env:COMPUTERNAME;$env:PROCESSOR_ARCHITECTURE
+"---------------------------------------------------"
+ipconfig /all
+
+}
+
+
+Invoke-Command -ComputerName lon-cl1,lon-dc1  -ScriptBlock {
+
+hostname
+}

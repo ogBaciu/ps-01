@@ -181,7 +181,26 @@ Get-Module -ListAvailable
 Get-Service | ? status -like "run*"|  select name, @{n="CustomName";e={$_.name}} | gm
 Get-Process  | select Handles, NPM, @{n="Suma";e={ [int]$_.Handles + [int]$_.NPM }}
 
-Get-WmiObject win32_logicaldisk -filter "deviceid='c:'" | select __server, FreeSpace ,Size  
+Get-WmiObject win32_logicaldisk -filter "deviceid='c:'" | select __server, FreeSpace ,Size  , @{n="GB_FreeSpace";e={$_.Freespace /1gb -as [int]}}, @{n="GB_Size";e={$_.Size /1gb -as [int]}} 
+
+get-volume  -DriveLetter c |select  @{n="MB_SizeRemaining";e={$_.SizeRemaining /1mb -as [int]}}, @{n="MB_Size";e={$_.Size /1mb -as [int]}} 
 
 
+##########################################################
 
+#filtrari SImple 
+SursaDeDate | where capdetabel -like "cevreisacauti"
+
+ping | ? { $_  -like "*-4*"}
+
+$sursadedate = Get-EventLog -LogName Application  
+
+$sursadedate | ? EntryType -like "error" 
+
+#filtrari avansate 
+SursaDeDate | where { $_.capdetabel -like "cevreisacauti"}
+
+$sursadedate | ? { $_.EntryType -like "error" }
+
+$sursadedate2 = ipconfig /all
+$sursadedate2  | ? { $_ -like "*ipv4*"}

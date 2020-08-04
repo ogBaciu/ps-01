@@ -331,14 +331,12 @@ $lista | % {Test-Connection $_ -count 1 }
 
 Test-Connection (Get-Content E:\listapc.txt) -count 1
 
-## Remote
+########## Remote
 Enable-PSRemoting -Force
 
 
 $cred = Get-Credential
-
 Enter-PSSession lon-dc1 -Credential $cred 
-
 Enter-PSSession lon-dc1 
 
 New-PSSession -ComputerName lon-dc1 
@@ -360,3 +358,7 @@ Invoke-Command -ComputerName lon-cl1,lon-dc1  -ScriptBlock {
 
 hostname
 }
+
+
+## !!!
+## expand 

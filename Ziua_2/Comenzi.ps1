@@ -115,3 +115,49 @@ New-WordDocument -WordDocName test.docx
 
 Stop-Transcript
 
+
+$cred = get-credential 
+Invoke-Command -ComputerName lon-dc1, lon-cl1 -ScriptBlock {
+
+Get-Service
+
+}
+
+
+
+
+Doar cele Running 
+Sa inceapa cu B* si D*
+
+export nume si status in csv
+
+
+Get-Service | ? status -like "runn*"  
+
+Get-Service | ? {($_.status -like "runn*" -and $_.name -like "b*") -or ($_.status -like "runn*" -and $_.name -like "d*")} | export-csv ./serv.csv -NoTypeInformation
+
+
+#Module
+
+Get-PSRepository
+
+Find-module *html* -Repository  PSGallery
+Install-Module pshtmltable -Repository PSGallery -Scope AllUsers -Force 
+
+$env:PSModulePath -split ";"
+
+Find-Script *word*
+
+install-script Get-WlanPasswords  -Scope CurrentUser 
+
+Get-PSSnapin
+
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Force
+Get-ExecutionPolicy
+
+
+ls C:\Users\Administrator\Downloads -Recurse | Unblock-File 
+
+#daca nu exista 
+$env:PSModulePath -split ";"
+mkdir C:\Users\Administrator\Documents\WindowsPowerShell\Modules

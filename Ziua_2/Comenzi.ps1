@@ -174,3 +174,14 @@ Get-Command -Module server*
 Get-WindowsFeature 
 Add-WindowsFeature telnet-client
 
+Get-Module -ListAvailable 
+
+#Custom Properties
+
+Get-Service | ? status -like "run*"|  select name, @{n="CustomName";e={$_.name}} | gm
+Get-Process  | select Handles, NPM, @{n="Suma";e={ [int]$_.Handles + [int]$_.NPM }}
+
+Get-WmiObject win32_logicaldisk -filter "deviceid='c:'" | select __server, FreeSpace ,Size  
+
+
+

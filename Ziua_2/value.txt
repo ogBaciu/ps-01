@@ -1,0 +1,12 @@
+﻿WinRM
+wisvc
+WlanSvc
+wlidsvc
+wlpasvc
+WManSvc
+wmiApSrv
+WMPNetworkSvc
+workfolderssvc
+WpcMonSvc
+WPDBusEnum
+WpnService

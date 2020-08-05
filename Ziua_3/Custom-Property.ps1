@@ -1,13 +1,10 @@
-﻿Import-Csv .\users.csv | foreach-object {
-$userprinicpalname = $_.SamAccountName + "@EXAMPLE.com"
-
-
-
+﻿
 $dateangajati = import-csv .\hr-angajati.csv
 
 $prelucrat = $dateangajati | select @{n="SamAccountName";e={"$($_.nume).$($_.prenume)"}}, @{n="UserPrincipalName";e={"$($_.nume).$($_.prenume)"}},`
 @{n="Name";e={"$($_.nume)"}}, @{n="DisplayName";e={"$($_.nume) $($_.prenume)"}},@{n="GivenName";e={"$($_.nume)"}}, @{n="SurName";e={"$($_.prenume)"}}, `
 @{n="Department";e={"$($_.Departament)"}},@{n="City";e={"$($_.Locatie)"}}
+
 $prelucrat 
 
 $prelucrat | foreach {

@@ -360,5 +360,10 @@ hostname
 }
 
 
-## !!!
-## expand 
+
+$aplicatii = Get-WmiObject -Class Win32_Product | select Name, Version | Out-GridView -Title "Aplicatii instalate " -OutputMode Single
+$MyApp = Get-WmiObject -Class Win32_Product | Where-Object{$_.Name -eq $aplicatii.Name}
+$MyApp.Uninstall()
+$MyApp | gm
+
+

@@ -19,5 +19,12 @@ New-ADUser -SamAccountName $_.SamAccountName -UserPrincipalName $_.UserPrincipal
 
                          }
 }
-else { write-host = "Oprim Rularea !!" -ForegroundColor Red}
+else { 
+
+write-host  "Oprim Rularea !!" -ForegroundColor Red 
+Write-Warning  "Stop  !!"
+
+
+
+}
 

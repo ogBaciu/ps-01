@@ -364,6 +364,15 @@ hostname
 $aplicatii = Get-WmiObject -Class Win32_Product | select Name, Version | Out-GridView -Title "Aplicatii instalate " -OutputMode Single
 $MyApp = Get-WmiObject -Class Win32_Product | Where-Object{$_.Name -eq $aplicatii.Name}
 $MyApp.Uninstall()
-$MyApp | gm
 
 
+$check = $null 
+
+$Check =Get-WmiObject -Class Win32_Product | Where-Object{$_.Name -like $aplicatii.Name}
+
+if ($Check -eq $null ) {write-host "APlicatia a fost stearsa !!"}
+else {
+write-host "Aplicatia nu a fost stearsa !!!" -ForegroundColor Yellow
+$Check
+
+}

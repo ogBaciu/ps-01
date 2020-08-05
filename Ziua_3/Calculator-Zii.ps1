@@ -9,11 +9,9 @@ $difY =  $Azi.Year - $ZiNastere.Year
 $difM = ($difY * 12) - (12 - $Azi.Month)
 
 $Diferenta = $Azi - $ZiNastere
-
 $dif = $Diferenta.Days.ToString()
 
 write-host "Au trecut $dif  zile de cat te-ai nascut ! "  -ForegroundColor Green
-
 write-host "Au trecut $difM  luni de cat te-ai nascut ! "  -ForegroundColor Green
 
 

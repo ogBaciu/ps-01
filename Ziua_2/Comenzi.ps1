@@ -361,18 +361,30 @@ hostname
 
 
 
-$aplicatii = Get-WmiObject -Class Win32_Product | select Name, Version | Out-GridView -Title "Aplicatii instalate " -OutputMode Single
-$MyApp = Get-WmiObject -Class Win32_Product | Where-Object{$_.Name -eq $aplicatii.Name}
+$aplicatii = Get-WmiObject -Class Win32_Product | select Name, Version | Out-GridView -Title "Aplicatii instalate " -OutputMode Multiple
+$aplicatii |foreach {
+$appName = $_.Name
+$MyApp = Get-WmiObject -Class Win32_Product | Where-Object {$_.Name -eq $appName }
+#$MyApp
 $MyApp.Uninstall()
+}
 
 
+
+$aplicatii |foreach {
+$appName = $_.Name
 $check = $null 
+$Check =Get-WmiObject -Class Win32_Product | Where-Object{$_.Name -like $appName}
 
-$Check =Get-WmiObject -Class Win32_Product | Where-Object{$_.Name -like $aplicatii.Name}
 
 if ($Check -eq $null ) {write-host "APlicatia a fost stearsa !!"}
 else {
 write-host "Aplicatia nu a fost stearsa !!!" -ForegroundColor Yellow
 $Check
+}
+
 
 }
+
+
+

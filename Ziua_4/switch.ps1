@@ -54,15 +54,25 @@
         $txt
         )
 
-
-
-Get-Service | export-csv $Path
-get-service | ConvertTo-Html | Out-File $Path
-get-service > $path
-
+Get-Service | ? status -like "$status"
 
 if ($txt) {
 
-#
+Get-Service | ? status -like "$status" > serv.txt
 
 }
+
+
+if($html)
+{
+
+get-service | ConvertTo-Html | Out-File serv.html
+}
+
+
+if($csv) 
+{
+Get-Service | export-csv serv.csv -NoTypeInformation
+}
+
+

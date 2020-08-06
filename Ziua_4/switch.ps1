@@ -36,9 +36,6 @@
                    ValueFromRemainingArguments=$false, 
                    Position=0,
                    ParameterSetName='Parameter Set 1')]
-        [ValidateNotNull()]
-        [ValidateNotNullOrEmpty()]
-        [ValidateCount(0,5)]
         [ValidateSet("Stopped", "Running")]
         [Alias("p1")] 
         $Status,

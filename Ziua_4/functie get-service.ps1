@@ -8,3 +8,4 @@ Get-Service | ? status -like "*$status*" | select -Last $last
 }
 
 servicii -status st -last 8
+

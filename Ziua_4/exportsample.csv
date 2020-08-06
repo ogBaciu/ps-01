@@ -4,3 +4,8 @@
 "NBK-DELL7","13251","Warning","The description for Event ID '10016' in Source 'DCOM' cannot be found.  The local computer may not have the necessary registry information or message DLL files to display the message, or you may not have permission to access them.  The following information is part of the event:'application-specific', 'Local', 'Activation', '{2593F8B9-4EAF-457C-B68A-50F6B8EA6B54}', '{15C20B67-12E7-4BB6-92BB-7AFF07997402}', 'NBK-DELL7', 'Administrator', 'S-1-5-21-2781739404-3922912205-538337213-500', 'LocalHost (Using LRPC)', 'Unavailable', 'Unavailable'","8/6/2020 1:07:03 PM"
 "NBK-DELL7","13250","Information","Service stopped.","8/6/2020 12:48:19 PM"
 "NBK-DELL7","13249","Information","Service started.","8/6/2020 12:40:27 PM"
+"NBK-DELL7","13248","Information","The system uptime is 1684953 seconds.","8/6/2020 12:00:00 PM"
+"NBK-DELL7","13247","Information","Service stopped.","8/6/2020 11:47:50 AM"
+"NBK-DELL7","13246","Information","Service started.","8/6/2020 11:40:26 AM"
+"NBK-DELL7","13245","Information","Service stopped.","8/6/2020 10:49:22 AM"
+"NBK-DELL7","13244","Information","Service started.","8/6/2020 10:40:25 AM"

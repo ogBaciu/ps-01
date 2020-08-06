@@ -39,7 +39,7 @@ $datePicker = New-Object System.Windows.Forms.DateTimePicker
 $datePicker.Location = "110, 7"
 $datePicker.Width = "150"
 $datePicker.Format = [windows.forms.datetimepickerFormat]::custom
-$datePicker.CustomFormat = "dd/MM/yyyy"
+$datePicker.CustomFormat = "MM/dd/yyyy"
 $mainForm.Controls.Add($datePicker)
 
 # MinTimePicker

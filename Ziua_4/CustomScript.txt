@@ -16,7 +16,7 @@ Total Error
 
 Sa fie un script \Ce nu trebuie modificat (Interactiv cu timpul)
 
-| out-file path
+| out-file -append path
 
 >
 >>

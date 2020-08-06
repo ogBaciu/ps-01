@@ -2,7 +2,7 @@
 Extra (sa nu se inchida la sfarsit sa poti alege si din alta zi !)
 
 
-Generati un raport  cu eventurile critice , warning si error  pentru :
+Generati un raport  cu eventurile  warning si error  pentru :
 
 Application 
 Security
@@ -11,8 +11,15 @@ System
 
 Plus Total dupa fiecare sectiune
 
-Total Loguri Critice
 Total Warning
 Total Error
 
 Sa fie un script \Ce nu trebuie modificat (Interactiv cu timpul)
+
+| out-file path
+
+>
+>>
+
+
+

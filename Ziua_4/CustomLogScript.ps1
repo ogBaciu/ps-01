@@ -5,7 +5,7 @@ do
    
    [datetime]$zi = read-host "LL/ZZ/An" 
    
-   function Eventuri ($Log,$computer)
+   function Eventuri ($Log)
    {
        
        Get-EventLog -LogName $log| ? {$_.TimeGenerated -le $zi.AddDays(1) -and $_.TimeGenerated -ge $zi  } | ? { $_.EntryType -like "er*" -or  $_.EntryType -like "wa*"}
@@ -13,9 +13,9 @@ do
 
    }
 
-   $App = Eventuri Application 
-   $Sec = Eventuri Security
-   $sys = Eventuri System 
+   $App = Eventuri -log Application 
+   $Sec = Eventuri -log Security
+   $sys = Eventuri -log System 
 
   $CoutErrApp =  ($App | ? EntryType -Like "Error" | measure).Count
   $CoutWarApp =  ($App | ? EntryType -Like "wa*" | measure).Count

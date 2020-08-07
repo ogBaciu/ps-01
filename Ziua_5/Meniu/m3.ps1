@@ -10,6 +10,7 @@ switch -Wildcard ($x)
         }
    '*2' { write-host " Ai apasat 2"
          Get-Process | ft
+
        }
    '*3' { write-host " Ai apasat 3"
    ipconfig

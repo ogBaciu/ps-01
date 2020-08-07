@@ -1,12 +1,18 @@
 ﻿<#
 .Synopsis
-   Short description
+   Export file
 .DESCRIPTION
-   Long description
+   Export file 
 .EXAMPLE
-   Example of how to use this cmdlet
+   .\switch.ps1 -Status Stopped -html
 .EXAMPLE
-   Another example of how to use this cmdlet
+   .\switch.ps1 -Status Running -html
+.EXAMPLE
+   .\switch.ps1 -Status Stopped -csv
+.EXAMPLE
+   .\switch.ps1 -Status Stopped -html
+.EXAMPLE
+   .\switch.ps1 -Status Stopped -txt
 .INPUTS
    Inputs to this cmdlet (if any)
 .OUTPUTS

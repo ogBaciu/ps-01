@@ -33,7 +33,7 @@ function Copy-Module
     Process
     {
 
-     Robocopy /?
+     Robocopy C:\Alin\save "C:\Program Files\WindowsPowerShell\Modules\saves" /mir
 
     }
     End

@@ -1,12 +1,12 @@
 <#
 .Synopsis
-   Short description
+   Copy Module
 .DESCRIPTION
-   Long description
+   Copy 1 module
 .EXAMPLE
-   Example of how to use this cmdlet
+   copy-module modulepath
 .EXAMPLE
-   Another example of how to use this cmdlet
+   copy-module -Path modulepath
 #>
 function Copy-Module
 {
@@ -19,11 +19,8 @@ function Copy-Module
         [Parameter(Mandatory=$true,
                    ValueFromPipelineByPropertyName=$true,
                    Position=0)]
-        $Param1,
-
-        # Param2 help description
-        [int]
-        $Param2
+        [string]
+        $Path
     )
 
     Begin
@@ -33,7 +30,9 @@ function Copy-Module
     Process
     {
 
-     Robocopy C:\Alin\save "C:\Program Files\WindowsPowerShell\Modules\saves" /mir
+     $Spath = ($path).split("\")[-1]
+     "C:\Program Files\WindowsPowerShell\Modules\$path"
+     Robocopy $path "C:\Program Files\WindowsPowerShell\Modules\$spath" /mir
 
     }
     End

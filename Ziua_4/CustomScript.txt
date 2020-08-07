@@ -1,0 +1,25 @@
+﻿Status cu logurile pentru o anumita zi (o singura zi)! 
+Extra (sa nu se inchida la sfarsit sa poti alege si din alta zi !)
+
+
+Generati un raport  cu eventurile  warning si error  pentru :
+
+Application 
+Security
+System
+
+
+Plus Total dupa fiecare sectiune
+
+Total Warning
+Total Error
+
+Sa fie un script \Ce nu trebuie modificat (Interactiv cu timpul)
+
+| out-file -append path
+
+>
+>>
+
+
+

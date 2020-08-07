@@ -16,3 +16,6 @@ Get-Job
 Receive-Job –Name DemoJob -Keep
 
 Get-Job –Name DemoJob | Remove-Job
+
+
+Register-ScheduledTask -Xml (get-content './Dell SupportAssistAgent AutoUpdate.xml' | out-string) -TaskName "Weekly System Info Report"  –Force 

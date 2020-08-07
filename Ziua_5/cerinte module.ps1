@@ -7,4 +7,8 @@
  -test daca merge netu 
   Test-NetConnection
  -count cate module ai instalate C:\Program Files\WindowsPowerShell\Modules 
-  | Measure
+
+   ("10","sdf","sdfs").count
+   ls "C:\Program Files\WindowsPowerShell\Modules" | gm
+   (ls "C:\Program Files\WindowsPowerShell\Modules").count
+   (ls "C:\Program Files\WindowsPowerShell\Modules" | measure).Count

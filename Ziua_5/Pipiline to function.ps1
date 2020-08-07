@@ -8,23 +8,28 @@
             $message
     )
 
+
     begin {
-        Write-Output -InputObject "Inceputul functiei ! Se executa o singura data"
+        Write-Output -InputObject "Inceputul functiei ! Se executa o singura data "
+ 
     }
     process {
     Write-Output -InputObject $message
+
+    "-------"
     #Write-Output -InputObject $input
     #get-help about_automatic_variables
     }
     end {
         Write-Output -InputObject "Sfarsitul functiei ! Se executa o singura data"
-        
+
+           
     }
 
 
 
 }
 
-@("test1","test2") | Show-Message
-"test1","test2" | Show-Message
+@("test1","test2",@("test4","test3")) | Show-Message
+"test1","test2" ,"test3","test4"| Show-Message
 Show-Message -message "test","test2","test3"
